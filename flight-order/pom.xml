@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>com.example.flight</groupId>
+        <artifactId>flight-booking</artifactId>
+        <version>1.0.0</version>
+    </parent>
+
+    <artifactId>flight-order</artifactId>
+    <name>flight-order</name>
+    <description>订单模块：下单（Redis 预扣 + 乐观锁防超卖）/ 取消 / 超时关单</description>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.example.flight</groupId>
+            <artifactId>flight-common</artifactId>
+        </dependency>
+        <!-- 下单依赖航班舱位与库存 -->
+        <dependency>
+            <groupId>com.example.flight</groupId>
+            <artifactId>flight-flight</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-redis</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.baomidou</groupId>
+            <artifactId>mybatis-plus-spring-boot3-starter</artifactId>
+        </dependency>
+        <!-- 15 分钟延时关单消息 -->
+        <dependency>
+            <groupId>org.apache.rocketmq</groupId>
+            <artifactId>rocketmq-spring-boot-starter</artifactId>
+        </dependency>
+    </dependencies>
+</project>
